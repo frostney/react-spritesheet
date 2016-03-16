@@ -8,6 +8,13 @@ class AnimatedSpriteSheet extends Component {
     frameWidth: PropTypes.number,
     frameHeight: PropTypes.number,
     isPlaying: PropTypes.bool,
+    loop: PropTypes.bool,
+    speed: PropTypes.number,
+  };
+
+  static defaultProps = {
+    loop: true,
+    isPlaying: true,
   };
 
   constructor(props) {
@@ -19,11 +26,15 @@ class AnimatedSpriteSheet extends Component {
   }
 
   componentDidMount() {
-
+    this.timerId = setInterval(() => {
+      this.setState({
+        frame: this.state.frame + 1,
+      });
+    });
   }
 
   componentWillUnmount() {
-
+    clearInterval(this.timerId);
   }
 
   render() {
