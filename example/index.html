@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>SpriteSheet example</title>
+	<script src="https://npmcdn.com/babel-core@5.8.35/browser.min.js"></script>
+	<script src="https://npmcdn.com/react@^0.14/dist/react.js"></script>
+	<script src="https://npmcdn.com/react-dom@^0.14/dist/react-dom.js"></script>
+  <script src="../dist/react-spritesheet.umd.js"></script>
+</head>
+<body>
+	<div id="container"></div>
+	<script type="text/babel">
+  	var App = React.createClass({
+			render: function() {
+				return (
+					<SpriteSheet.AnimatedSpriteSheet
+            filename="https://cdn.codeandweb.com/blog/2014/11/05/animate-sprites-in-css-with-texturepacker/capguy-walk.png"
+            bounds={{ x: 0, y: 0, width: 1472, height: 325 }}
+            frame={{ width: 184, height: 325 }}
+            speed={100} />
+				)
+			}
+		});
+
+		ReactDOM.render(<App />, document.getElementById('container'));
+    </script>
+</body>
+</html>

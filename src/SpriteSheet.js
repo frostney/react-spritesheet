@@ -3,6 +3,10 @@ import React, { PropTypes } from 'react';
 import Sprite from './Sprite';
 
 const SpriteSheet = ({ filename, data, sprite }) => {
+  if (!filename || !data || !sprite) {
+    return null;
+  }
+
   const currentSprite = data[sprite];
 
   const spriteData = { ...currentSprite, filename };

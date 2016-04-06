@@ -1,5 +1,3 @@
-import Sprite from './Sprite';
-import SpriteSheet from './SpriteSheet';
-import AnimatedSpriteSheet from './AnimatedSpriteSheet';
-
-export default { Sprite, SpriteSheet, AnimatedSpriteSheet };
+export Sprite from './Sprite';
+export SpriteSheet from './SpriteSheet';
+export AnimatedSpriteSheet from './AnimatedSpriteSheet';

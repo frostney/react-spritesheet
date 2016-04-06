@@ -7,11 +7,11 @@
   "scripts": {
     "prebuild": "rimraf dist",
     "build": "rollup-babel-lib-bundler src/index.js",
+    "prepublish": "in-publish && npm run build || not-in-publish",
     "lint": "eslint .",
-    "pretest": "npm run build && npm run lint",
-    "test": "karma start",
+    "test": "ava --verbose 'src/**/*.test.js'",
     "precommit": "npm run lint",
-    "prepublish": "npm run build"
+    "coverage": "nyc --reporter lcov --reporter html ava 'src/**/*.test.js'"
   },
   "repository": {
     "type": "git",
@@ -24,6 +24,28 @@
     "sprites",
     "spritesheet"
   ],
+  "files": [
+    "dist",
+    "src"
+  ],
+  "ava": {
+    "babel": "inherit",
+    "require": "./ava-jsdom-setup"
+  },
+  "rollupBabelLibBundler": {
+    "moduleName": "SpriteSheet",
+    "babel": {
+      "presets": [
+        "es2015-loose-rollup",
+        "react"
+      ],
+      "plugins": [
+        "transform-class-properties",
+        "transform-export-extensions",
+        "transform-object-rest-spread"
+      ]
+    }
+  },
   "author": "Johannes Stein",
   "license": "MIT",
   "bugs": {
@@ -34,22 +56,27 @@
     "react": "^0.14.5"
   },
   "devDependencies": {
+    "ava": "^0.13.0",
     "babel-core": "^6.5.2",
     "babel-eslint": "^5.0.0",
     "babel-istanbul-loader": "0.0.3",
     "babel-loader": "^6.2.3",
     "babel-plugin-transform-class-properties": "^6.5.2",
+    "babel-plugin-transform-export-extensions": "^6.5.0",
     "babel-plugin-transform-object-rest-spread": "^6.6.5",
+    "babel-polyfill": "^6.7.4",
     "babel-preset-es2015-loose": "^7.0.0",
     "babel-preset-es2015-loose-rollup": "^7.0.0",
     "babel-preset-react": "^6.5.0",
+    "babel-register": "^6.7.2",
     "buffer": "^4.5.0",
     "chai": "^3.4.1",
     "enzyme": "^2.0.0",
-    "eslint": "^2.2.0",
-    "eslint-config-airbnb": "^6.0.2",
-    "eslint-plugin-react": "^4.0.0",
+    "eslint": "^2.7.0",
+    "eslint-config-airbnb": "^6.2.0",
+    "eslint-plugin-react": "^4.3.0",
     "husky": "^0.11.1",
+    "in-publish": "^2.0.0",
     "json-loader": "^0.5.4",
     "karma": "^0.13.21",
     "karma-chai": "^0.1.0",
@@ -60,11 +87,12 @@
     "karma-sourcemap-loader": "^0.3.7",
     "karma-webpack": "^1.7.0",
     "mocha": "^2.3.4",
+    "nyc": "^6.2.1",
     "phantomjs-prebuilt": "^2.1.4",
     "react-addons-test-utils": "^0.14.5",
     "react-dom": "^0.14.5",
     "rimraf": "^2.5.2",
-    "rollup-babel-lib-bundler": "^2.1.1",
+    "rollup-babel-lib-bundler": "^2.5.5",
     "webpack": "^1.12.14"
   }
 }
