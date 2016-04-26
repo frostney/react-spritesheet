@@ -14,5 +14,5 @@ test('is instantiable', t => {
     data={{ hello: { x: 0, y: 0, width: 0, height: 0 } }}
   />);
 
-  t.ok(wrapper);
+  t.truthy(wrapper);
 });

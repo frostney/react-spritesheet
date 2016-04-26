@@ -1,4 +1,5 @@
 import React, { PropTypes, Component } from 'react';
+import shallowEqual from 'shallowequal';
 
 import Sprite from './Sprite';
 
@@ -66,6 +67,38 @@ class AnimatedSpriteSheet extends Component {
         frame: this.state.frame + 1,
       });
     }, this.props.speed);
+  }
+
+  shouldComponentUpdate(nextProps, nextState) {
+    if (!shallowEqual(this.props.frame, nextProps.frame)) {
+      return true;
+    }
+
+    if (!shallowEqual(this.props.bounds, nextProps.bounds)) {
+      return true;
+    }
+
+    if (!shallowEqual({
+      filename: this.props.filename,
+      initialFrame: this.props.initialFrame,
+      isPlaying: this.props.isPlaying,
+      loop: this.props.loop,
+      speed: this.props.speed,
+    }, {
+      filename: nextProps.filename,
+      initialFrame: nextProps.initialFrame,
+      isPlaying: nextProps.isPlaying,
+      loop: nextProps.loop,
+      speed: nextProps.speed,
+    })) {
+      return true;
+    }
+
+    if (!shallowEqual(this.state, nextState)) {
+      return true;
+    }
+
+    return false;
   }
 
   componentWillUnmount() {
