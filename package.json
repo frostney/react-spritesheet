@@ -1,6 +1,6 @@
 {
   "name": "react-spritesheet",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "<SpriteSheet /> component for React",
   "main": "dist/react-spritesheet.js",
   "jsnext:main": "dist/react-spritesheet.es2015.js",
@@ -58,6 +58,9 @@
     "react": "^15.0.1",
     "shallowequal": "^0.2.2"
   },
+  "bundleDependencies": [
+    "shallowequal"
+  ],
   "devDependencies": {
     "ava": "^0.14.0",
     "babel-core": "^6.7.7",
@@ -85,6 +88,6 @@
     "react-addons-test-utils": "^15.0.1",
     "react-dom": "^15.0.1",
     "rimraf": "^2.5.2",
-    "rollup-babel-lib-bundler": "^2.6.2"
+    "rollup-babel-lib-bundler": "^3.0.1"
   }
 }
