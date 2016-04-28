@@ -10,5 +10,5 @@ const FILENAME = 'https://cdn.codeandweb.com/blog/2014/11/05/animate-sprites-in-
 test('is instantiable', t => {
   const wrapper = render(<Sprite filename={FILENAME} />);
 
-  t.ok(wrapper);
+  t.truthy(wrapper);
 });
