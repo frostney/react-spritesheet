@@ -66,7 +66,7 @@ const spriteSheet = {
 <SpriteSheet filename="myimage.png" data={spriteSheet} sprite="image1" />
 ```
 
-For generating a spritesheet object, take a look at TexturePacker or spritesmith.
+For generating a spritesheet object, take a look at [TexturePacker](https://www.codeandweb.com/texturepacker) or [spritesmith](https://github.com/Ensighten/spritesmith).
 
 #### Props
 
