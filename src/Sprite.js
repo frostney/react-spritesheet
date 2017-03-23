@@ -8,6 +8,7 @@ const Sprite = ({ filename, x, y, width, height }) => {
   const style = {
     backgroundImage: `url(${filename})`,
     backgroundPosition: `${x * (-1)}px ${y * (-1)}px`,
+    backgroundRepeat: 'no-repeat',
     width,
     height,
   };
